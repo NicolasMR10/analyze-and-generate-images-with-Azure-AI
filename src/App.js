@@ -13,7 +13,7 @@ function App() {
   };
 //Create a button that says "Analize"
   const button1onClick = async() => {
-    const response = await analyzeImage(imageUrl);
+    const response = await analyzeImage(imageUrl)
     setAnalysis(response); // Actualiza el estado con la respuesta de la API
   };
 //Create a button that says "Generate"
@@ -28,7 +28,7 @@ function App() {
    <div className="App"> 
     <h1>{title}</h1>
     <h4>Insert URL or type prompt</h4>
-    <input type="text" onChange={handletextBox} placeholder="Input URL address here" />
+    <input type="url" onChange={handletextBox} placeholder="Input URL address here" pattern="https://.*" size="30" required/>
       <div id="buttons">
         <button onClick={button1onClick}>Analize</button>
         <button onClick={button2onClick}>Generate</button>

@@ -1,33 +1,28 @@
+import axios from 'axios';
 
-import axios from 'axios'
+const compVisKey = '670cc8031a104e9eb9447f49a4c657c2';
+const compVisEndpoint = 'imagproc.cognitiveservices.azure.com';
 
-// Get the named env var, and assign it to the value variable
-const compVisKey =
-    process.env.VISION_KEY;
-const compVisEndpoint =
-    process.env.VISION_END;
 const analyzeImage = async (imageUrl) => {
   const endpoint = `https://${compVisEndpoint}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags,caption`;
-  const params = {
-    'visualFeatures': 'Categories,Description,Color',
-    'details': '',
-    'language': 'es'
-  };
-  const headers = {
-    'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': compVisKey
-  };
-  console.log(compVisEndpoint);
-  console.log(compVisEndpoint);
+
   try {
-    const response = await axios.post(endpoint, { url: imageUrl }, { params, headers });
-    console.log(response);
+    const response = await axios.post(endpoint, { url: imageUrl }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Ocp-Apim-Subscription-Key': compVisKey
+      }
+    });
+
+    console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error(`Error in Azure Image Analysis: ${error}`);
+    if (error.response) {
+      console.error('Response Code', error.response.status);
+      console.error('Response Body', error.response.data);
+    }
     throw error;
   }
 };
 
 export default analyzeImage;
-

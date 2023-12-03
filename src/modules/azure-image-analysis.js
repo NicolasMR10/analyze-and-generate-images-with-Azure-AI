@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const compVisKey = '670cc8031a104e9eb9447f49a4c657c2';
-const compVisEndpoint = 'imagproc.cognitiveservices.azure.com';
+const compVisKey = '';
+const compVisEndpoint = '';
 
 const analyzeImage = async (imageUrl) => {
   const endpoint = `https://${compVisEndpoint}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags,caption`;

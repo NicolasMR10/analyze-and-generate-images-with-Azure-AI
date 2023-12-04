@@ -36,6 +36,7 @@ jobs:
         env: # Add environment variables here
           REACT_APP_VISION_KEY: ${{ secrets.REACT_APP_VISION_KEY }}
           REACT_APP_VISION_END: ${{ secrets.REACT_APP_VISION_END }}
+          REACT_APP_OPENAI_KEY: ${{ secrets.REACT_APP_OPENAI_KEY }}
           
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -50,4 +51,5 @@ jobs:
         env: # Add environment variables here
           REACT_APP_VISION_KEY: ${{ secrets.REACT_APP_VISION_KEY }}
           REACT_APP_VISION_END: ${{ secrets.REACT_APP_VISION_END }}
+          REACT_APP_OPENAI_KEY: ${{ secrets.REACT_APP_OPENAI_KEY }}
           action: "close"

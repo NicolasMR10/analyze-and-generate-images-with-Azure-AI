@@ -1,11 +1,20 @@
 import axios from 'axios';
 
-const compVisKey = '670cc8031a104e9eb9447f49a4c657c2';
-const compVisEndpoint = 'imagproc.cognitiveservices.azure.com';
+const compVisKey = process.env.REACT_APP_VISION_KEY;
+const compVisEndpoint = process.env.REACT_APP_VISION_END;
 
-const analyzeImage = async (imageUrl) => {
+export async function analyzeImage(imageUrl) {
   const endpoint = `https://${compVisEndpoint}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags,caption`;
+  const urlPattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
 
+if (!urlPattern.test(imageUrl)) {
+  throw new Error("Por favor, ingresa una URL válida.");
+}
   try {
     const response = await axios.post(endpoint, { url: imageUrl }, {
       headers: {
@@ -23,6 +32,18 @@ const analyzeImage = async (imageUrl) => {
     }
     throw error;
   }
-};
+}
 
-export default analyzeImage;
+export function isConfigured() {
+  const compVisKey = process.env.REACT_APP_VISION_KEY;
+  const compVisEndpoint = process.env.REACT_APP_VISION_END;
+
+  if (!compVisKey || !compVisEndpoint) {
+    return {
+      isConfigured: false,
+      message: "Las variables de entorno para el servicio de Azure no están configuradas correctamente."
+    };
+  }
+
+  return { isConfigured: true };
+}

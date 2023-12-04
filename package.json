@@ -8,6 +8,10 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^1.6.2",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "openai": "^4.0.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "^5.0.1"
@@ -33,5 +37,8 @@
       "last 1 edge version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^8.0.1"
   }
 }

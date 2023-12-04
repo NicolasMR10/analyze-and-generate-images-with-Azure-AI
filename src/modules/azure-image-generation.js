@@ -28,7 +28,6 @@ export async function generateImage(prompt) {
 };
 
 export function isConfigured() {
-  const openAIKey = process.env.REACT_APP_OPENAI_KEY;
 
   if (!openAIKey) {
     return {

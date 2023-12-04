@@ -35,8 +35,6 @@ if (!urlPattern.test(imageUrl)) {
 }
 
 export function isConfigured() {
-  const compVisKey = process.env.REACT_APP_VISION_KEY;
-  const compVisEndpoint = process.env.REACT_APP_VISION_END;
 
   if (!compVisKey || !compVisEndpoint) {
     return {

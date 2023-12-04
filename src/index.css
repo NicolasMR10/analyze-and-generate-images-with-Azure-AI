@@ -1,3 +1,65 @@
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+h4 {
+  color: #333;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.Response pre {
+  margin-top: 20px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.Response  h2 {
+  margin-top: 0;
+}
+
+.Response img {
+  max-width: 100%;
+  height: auto;
+}
+
+.Response pre {
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+  text-align: left;
+}
+
 label {
     display: block;
     font:
@@ -8,6 +70,12 @@ label {
   input,
   label {
     margin: 0.4rem 0;
+  }
+
+  body {
+    background-image: url('./FondoApp2.jpg');
+  background-size: cover;
+  background-position: center top;
   }
 
 
